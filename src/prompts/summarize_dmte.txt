@@ -1,0 +1,35 @@
+You are an expert in analyzing machine learning research papers for the purpose of code reproduction. You will be provided with a full research paper in markdown format.
+
+Your task is to produce a detailed and structured summary that focuses on all aspects necessary for faithfully reproducing the method described in the paper.
+
+NOTES:
+- Your summary should strictly reflect the paper's methods and experiments without introducing external assumptions. And the summary needs to be as detailed and informative as possible to assist in writing code.
+- Your output must be organized into the following four top-level sections. Each section should use a `##` Markdown heading for clear demarcation and be ordered precisely as listed below.
+- Do not use abbreviations like “e.g.”, “etc.”, or ellipses. Instead, fully list every dataset, step, hyperparameter, and component mentioned in the paper.
+
+```markdown
+## Data
+- Detail all datasets used for experiments, including their names, specific versions (if mentioned), and any public availability notes. Describe data formats, specific preprocessing steps, and any unique data loading mechanisms or requirements. Provide a comprehensive summary of section Data.
+
+---
+
+## Model
+- Provide a comprehensive breakdown of the model's components. Describe the connections between different components clearly. Provide a comprehensive summary of section Model.
+
+---
+
+## Training
+- Describe the training process in detail, including the training loop, loss functions, optimizers, learning rate schedules, and any other relevant hyperparameters. Include information on how the model is trained, such as batch sizes, epochs, and any specific training techniques used. Provide a comprehensive summary of section Training.
+
+---
+
+## Evaluation
+- Describe the evaluation protocol in detail, including metrics used, evaluation datasets, and any specific evaluation procedures. Include information on how the model's performance is measured and reported. Provide a comprehensive summary of section Evaluation.
+```
+
+Please respond with the paper summary in markdown format, beginning with ```markdown and ending with ```. 
+
+Here is the full content of the research paper in markdown format:
+```markdown
+{paper_content}
+```

@@ -1,0 +1,90 @@
+You are an expert technical writer and software engineer with a knack for clear and natural language. You are tasked with creating precise, verifiable implementation requirements from research papers that are easy for humans to read and understand.
+
+**Instructions**:
+
+1.  **Decompose**: Analyze the "Guide Fact" to identify and isolate every distinct, verifiable claim. A claim is 'verifiable' if a reviewer can confirm its implementation by directly inspecting the code, configuration files without needing to re-run the entire experiment to observe its effect.
+A. First, identify and preserve indivisible units. Your highest priority is to keep self-contained concepts like equations and algorithms as a single, indivisible unit. Do not break them into multiple atomic facts.
+* **Example (Correct Handling of Equations):**
+    * **Input Fact:** `"The loss function is $L = \\lambda L_{{CE}} + (1 - \\lambda) L_{{reg}}$."`
+    * **Result:** This must become **one single criterion**. The entire formula is the fact.
+    * **You must not** create separate criteria for $L$, $L_{{CE}}$, and $L_{{reg}}$.
+B. Then, decompose all other claims into atomic facts. For any information that is *not* a self-contained formula or algorithm, break it down into the smallest meaningful units. A single sentence often contains multiple atomic facts.
+Your can break it down into atomic facts such as:
+    * **Data and Task Specification**: Identify the specific datasets used and the task being performed. (e.g., "The Cora dataset is used," "The task is node classification.")
+    * **Data Handling and Preprocessing**: The specific methods for splitting, normalizing, or augmenting data. (e.g., "Data is split 80/10/10," "Inputs are normalized with a specific mean/std.")
+    * **Configuration and Hyperparameters**: Extract specific key-value settings. This is a very common type of fact. (e.g., `learning_rate: 0.01`, `optimizer: 'AdamW'`, `dropout: 0.5`, `epochs: 200`).
+    * **Model Architecture and Components**: Pinpoint claims about the model's structure or its parts. (e.g., "The model uses GCN layers," "An attention mechanism is included," "Node features are represented by a learnable embedding vector.").
+    * **Algorithmic Process & Calculations**: Isolate specific computational steps or references to formulas. **Note**: If the fact describes a complete, self-contained equation or algorithm (like a specific loss function), treat it as a **single, indivisible unit** and write it as a **single criterion**.
+    * **Evaluation**: Identify the specific metrics used to assess performance. (e.g., "Model performance is measured by Accuracy," "The F1-score is reported.").
+    * **Package Requirements**: Note any specified libraries, packages, or hardware. (e.g., "The implementation requires PyTorch").
+    
+2.  **Formulate a Verifiable Criterion**: Your ultimate goal is to generate a **verifiable criterion** for each decomposed fact. Think of each criterion as a self-contained test case description that a code reviewer will use. It must clearly state *what* needs to be verified and *where/when* it applies.
+    To do this, formulate a clear and precise `criterion` string by naturally weaving together these two essential components:
+    * **The Atomic Fact**: The specific, code-level claim to be checked. This is **atomic fact** you identified in Step 1.
+    * **The Scope**: The complete context in which the fact is true. This is the **"where" or "when"**. (e.g., "for the text classification task," "during the main experiments," "in the ablation study").
+    For maximum readability and impact, structure your sentence to present the core **Fact** as the main subject, with the **Scope** providing the necessary context. Feel free to use one or two fluent sentences to ensure the criterion is both complete and easy for a human to understand.
+    For clarity with complex topics, feel free to use one or two fluent sentences.
+
+3.  **Output Format**: Your response must be a valid **JSON list of objects**. Each object in the list must contain a single key, `"criterion"`.
+    Inside a natural, human-readable `criterion` string, you **must embed** distinct XML-style tags to precisely identify the two essential components:
+    * The **Verifiable Fact** (the most granular claim, e.g., the parameter and its value) must be enclosed in `<fact>` and `</fact>` tags.
+    * The **Scope** (the context where the fact is true) must be enclosed in `<scope>` and `</scope>` tags.
+    
+4.  **Escaping and Formatting Rules (Very Important)**: To ensure the output is valid JSON, you must follow these rules for the `criterion` string:
+    * **Backslashes**: All backslashes `\` **MUST** be escaped as `\\`. For example, `$\\sigma$` must be written as `$\\\\sigma$`.
+    * **Double Quotes**: All double quotes `"` that are part of the text **MUST** be escaped as `\\"`. For example, a "vanilla" model would be written as `a \\"vanilla\\" model`.
+
+---
+Here are two dummy examples of inputs and expected outputs. 
+
+**Example 1: Handling Entities and Hyperparameters**
+
+**Input**
+Guide Fact: "In our experiments, we use the AdamW optimizer with a learning rate of 1e-4 and a weight decay of 0.01 on dataset Cora. we use the Adam with a learning rate of 2e-4 and dropout of 0.2 on dataset Citeseer."
+Reference Sentence: "We tuned hyperparameters separately for each dataset. For experiments on Cora, we used the AdamW optimizer with a learning rate of 1e-4 and weight decay of 0.01. For the Citeseer dataset, we found the standard Adam optimizer with a learning rate of 2e-4 and a dropout of 0.2 yielded better results."
+
+**Your Output**:
+[
+    {{
+      "criterion": "The <fact>AdamW optimizer</fact> is used to train the model <scope>for the dataset Cora</scope>."
+    }},
+    {{
+      "criterion": "A <fact>learning rate of 0.0001</fact> is applied <scope>when using the AdamW optimizer on the Cora dataset</scope>."
+    }},
+    {{
+      "criterion": "A <fact>weight decay of 0.01</fact> is used <scope>when using the AdamW optimizer on the Cora dataset</scope>."
+    }},
+    {{
+      "criterion": "The <fact>Adam optimizer</fact> is used to train the model <scope>for the dataset Citeseer</scope>."
+    }},
+    {{
+      "criterion": "A <fact>learning rate of 0.0002</fact> is applied <scope>when using the Adam optimizer on the Citeseer dataset</scope>."
+    }},
+    {{
+      "criterion": "A <fact>dropout of 0.2</fact> is applied <scope>when using the Adam optimizer on the Citeseer dataset</scope>."
+    }}
+]
+
+**Example 2: Handling Methods, Architecture, and Processes**
+
+**Input**
+Guide Fact: "The actor loss for on-policy updates is the PPO clipped objective, defined as $L^{{CLIP}}(\\theta) = \\hat{{\\mathbb{{E}}}}_t [ \\min(r_t(\\theta) \\hat{{A}}_t, \\text{{clip}}(r_t(\\theta), 1 - \\epsilon, 1 + \\epsilon) \\hat{{A}}_t) ]$."
+Reference Sentence: "For all on-policy updates, we compute the actor loss using the PPO clipped surrogate objective (Schulman et al., 2017): $L^{{CLIP}}(\\theta) = \\hat{{\\mathbb{{E}}}}_t [ \\min(r_t(\\theta) \\hat{{A}}_t, \\text{{clip}}(r_t(\\theta), 1 - \\epsilon, 1 + \\epsilon) \\hat{{A}}_t) ]$, where $r_t(\\theta)$ is the probability ratio."
+
+**Your Output**:
+[
+    {{
+      "criterion": "The <fact>actor loss is calculated using the PPO clipped objective: $L^{{CLIP}}(\\\\theta) = \\\\hat{{\\\\mathbb{{E}}}}_t [ \\\\min(r_t(\\theta) \\\\hat{{A}}_t, \\\\text{{clip}}(r_t(\\\\theta), 1 - \\\\epsilon, 1 + \\\\epsilon) \\\\hat{{A}}_t) ]$</fact> <scope>for all on-policy updates</scope>."
+    }}
+]
+
+Please respond with ONLY the list.
+
+Guide Fact:
+{guide_fact}
+
+Reference Sentence from Paper:
+{reference_sentence}
+
+Full Paper Text (for context):
+{full_paper_text}

@@ -1,0 +1,7 @@
+Here is target part of the code framework: {code}
+
+And here is its corresponding summary from the original research paper: {summary}
+
+And here is its corresponding detailed configuration: {config}
+
+Please generate step comments for the provided code framework part. Remember that respond with only the target code block with step comments. No explanations or extra text. The Python code should begin with ```python and end with ```.

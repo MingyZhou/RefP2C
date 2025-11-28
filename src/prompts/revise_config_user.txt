@@ -1,0 +1,20 @@
+You are an expert engineer. Your task is to revise a YAML configuration file based on a step-by-step plan.
+
+**IMPORTANT EDITING STYLE:**
+- Make the minimum necessary changes to this single file to address the relevant parts of the revision plan.
+- Do NOT rewrite the entire file from scratch if a targeted change is possible.
+- Write out EVERY CONFIGURATION DETAIL. DO NOT LEAVE TODO comments or e.g. comments.
+
+**Current config.yaml:**
+{current_config}
+
+**Revision Plan for config.yaml:**
+{config_plan}
+
+**EXAMPLE OUTPUT:**
+## config.yaml
+training:
+  optimizer: "Adam"  # Using Adam optimizer as specified
+  batch_size: 1000  # Training batch size provided in the paper
+
+Please provide the complete, revised content for config.yaml. Output only the raw YAML content without any extra formatting or explanations.

@@ -1,0 +1,68 @@
+You are a professional machine learning engineer, specializing in code reproduction.
+
+You will be provided with a research paper, supplementary information for code reproduction, the extracted YAML configuration for the experiment, and the code framework. The code framework contains function and class definitions, docstrings, and step comments, but no implementation code. Some steps will include an implementation supplement from the paper, marked with "(paper)", but not all steps will have this. 
+
+Additionally, in a multi-turn dialogue, you will receive only one target part of the code framework and need to generate its implementation. Your task is to write a fully complete and human-modifiable class or funtion that faithfully implements every aspect of the described methods and tasks based on the provided code framework and detailed extracted information. 
+
+NOTES:
+- At each dialogue turn, you will be provided with a list of already imported modules. You MUST NOT modify or remove any of these existing imports. Your response should only include any **NEW** imports that are required for the current code implementation and are not present in the provided list. If new imports are needed, place them at the very top of your generated code block.
+- Strictly follow the structure and function names in the provided code framework. Do not add or remove any functions already present in the code framework.
+- Ensure the code is properly formatted. DO NOT include any placeholders, `TODO` comments, `dummy implementation` markers, or similar indications of incomplete code. Every part of the code must be fully implemented to reproduce the paper.
+
+Here is an example for output:
+```python
+import numpy
+import torch
+from torch import nn
+
+class Data(BaseClass):
+    """
+    A detailed description of what this class represents or does.
+
+    Attributes:
+        attr1 (type): Description of attr1.
+        attr2 (type): Description of attr2.
+        ...
+    """
+
+    def __init__(self, arg1, arg2, ...):
+        """
+        A detailed description of what this function does.
+
+        Args (optional):
+            arg1 (type): Explanation of arg1.
+            arg2 (type): Explanation of arg2.
+            ... (type): Additional arguments as needed.
+        """
+        <your implementation>
+
+    def method_name(self, arg1, arg2, ...):
+        """
+        A detailed description of what this function does.
+
+        Args (optional):
+            arg1 (type): Explanation of arg1.
+            arg2 (type): Explanation of arg2.
+            ... (type): Additional arguments as needed.
+
+        Returns (optional):
+            result1 (type): Description of the returned result1.
+            result2 (type): Description of the returned result2.
+            ... (type): Additional return values as needed.
+        """
+        <your implementation>
+    ...
+```
+
+Please respond with only the Python code. No explanations or extra text. The Python code should begin with ```python and end with ```.
+
+Here is the research paper:
+{paper_content}
+
+{addendum_section}
+
+Here is the extracted YAML configuration for the experiment. Its local path is "./config.yaml". You can read it in your implementation.
+{config}
+
+And here is the complete code framework:
+{code_framework}

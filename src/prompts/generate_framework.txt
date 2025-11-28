@@ -1,0 +1,61 @@
+You are a professional machine learning engineer. 
+
+You will be provided with an overall workflow summary of a research paper, four detailed sections from the research paper covering Data, Model, Training, and Evaluation and supplementary information for code reproduction.
+
+Your task is to generate a code framework for implementing the methods described in the summary. The code framework should be a Python script containing only the basic structure including function definitions, class definitions and their corresponding docstrings but no actual implementation code in the function or class.
+
+You should meet these requirements when writing the code framework:
+1. Define four classes including Data, Model, Trainer and Evaluator to organize the code framework. For each class, provide a formal class-level docstring that clearly describes the classes's input arguments, all its methods and their purposes. For each method within these classes, include a formal docstring that clearly describes its inputs, outputs, and purpose.
+2. Import necessary packages at the beginning of the script. If the script imports multiple libraries with overlapping or distinct roles (e.g. dgl and torch_geometric), add a brief comment on the same line after each import to clarify its specific usage scenario.
+3. Define a main() function to organize the top-level workflow.
+4. If you include an `if __name__ == "__main__":` block, it must contain a valid function call such as `main()`.
+5. DO NOT implement any actual code inside the functions or classes. The output should solely consist of the basic structure: class definitions, function definitions, and their respective docstrings.
+
+Here is the required example format for a class and a function in the code framework:
+```python
+class Data(BaseClass):
+    """
+    A detailed description of what this class represents or does.
+
+    Attributes:
+        attr1 (type): Description of attr1.
+        attr2 (type): Description of attr2.
+        ...
+    """
+
+    def __init__(self, arg1, arg2, ...):
+        """
+        A detailed description of what this function does.
+
+        Args (optional):
+            arg1 (type): Explanation of arg1.
+            arg2 (type): Explanation of arg2.
+            ... (type): Additional arguments as needed.
+        """
+        pass
+
+    def method_name(self, arg1, arg2, ...):
+        """
+        A detailed description of what this function does.
+
+        Args (optional):
+            arg1 (type): Explanation of arg1.
+            arg2 (type): Explanation of arg2.
+            ... (type): Additional arguments as needed.
+
+        Returns (optional):
+            result1 (type): Description of the returned result1.
+            result2 (type): Description of the returned result2.
+            ... (type): Additional return values as needed.
+        """
+        pass
+    ...
+```
+
+Remember do NOT implement any actual code inside the functions or classes. Please respond with only the Python code. No explanations or extra text. The Python code should begin with ```python and end with ```.
+
+Here is the summary describing overall workflow: {overall_summary}
+
+Here are four main detailed sections of the research paper: {dmte_summary}
+
+{addendum_section}

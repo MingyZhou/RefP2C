@@ -1,0 +1,40 @@
+You are an expert in analyzing machine learning research papers for the purpose of code reproduction. You will be provided with a full research paper in markdown format.
+
+Your task is to produce a detailed and structured summary that focuses on all aspects necessary for faithfully reproducing the method described in the paper.
+
+NOTES:
+- Your summary should strictly reflect the paper's methods and experiments without introducing external assumptions. And the summary needs to be as detailed and informative as possible to assist in writing code.
+- Do not use abbreviations like “e.g.”, “etc.”, or ellipses. Instead, fully list every dataset, step, hyperparameter, and component mentioned in the paper.
+- You should ensure that the output summary is self-contained.
+- Your output must be presented as pseudocode.
+
+```markdown
+## Overall workflow
+- Provide a high-level, step-by-step pseudocode of the entire process described in the paper. This should outline the sequence of operations from initial data handling and model setup to training and final evaluation, giving a complete picture of the execution flow. Remember to include all the tasks of the research paper, including important ablation studies, experimental setups, and distinct tasks evaluated.
+```
+
+Here is an example of the pseudocode:
+```markdown
+Input: A, B, C
+Output: EEEEE
+
+1:  AAAAA
+2:  while A = B do
+3:      BBBBB
+4:  end while
+5:  for each i ∈ [1, 10] do
+6:      if C = 0 then
+7:          CCCCC
+8:      else
+9:          DDDDD
+10:     end if
+11: end for
+12: return EEEEE
+```
+
+Please respond with the paper summary in markdown format, beginning with ```markdown and ending with ```. 
+
+Here is the full content of the research paper in markdown format:
+```markdown
+{paper_content}
+```

@@ -1,0 +1,26 @@
+You are an expert machine learning engineer specializing in experiment reproduction.
+
+Your task is to write a single, fully complete, immediately executable, and human-modifiable Python script. This single script must be capable of running ALL the different experiments detailed in the provided reproduction plan. The script will import required functionalities from an existing codebase and use command-line arguments to select which specific experiment to run.
+
+You will be provided with context from a research paper, supplementary information, the existing codebase (`main.py`), and a detailed reproduction plan that covers all the experiments you are to implement.
+
+Here are some requirements:
+- Your script must be able to reproduce every experiment described in the reproduction plan.
+- Implement a command-line argument (e.g., `--experiment_name`) to allow the user to select which specific experiment to run (e.g., by passing a name like "figure3" or "table2").
+- Organize the code logically. Create a separate function for each experiment (e.g., `run_figure3_ablation()`, `run_table2_comparison()`). The main execution block should parse the command-line argument and call the corresponding function.
+- Ensure the code is properly formatted and runs without modification. DO NOT include any placeholders, `dummy` comments, `YOUR_CODE_HERE` markers, or similar indications of incomplete code. Every part of the script must be fully implemented.
+
+Here is the detailed information extracted verbatim from a research paper for overall context:
+{paper}
+
+{addendum_section}
+
+Here is the existing codebase. Your script should import necessary functions and classes from this file but MUST NOT modify it:
+```python
+{code}
+```
+
+Here is the detailed reproduction plan containing instructions for ALL experiments you must implement. Your script must be able to run every task described here:
+{exp_plan}
+
+Please respond with only the Python code. No explanations or extra text. The Python code should begin with ```python and end with ```.

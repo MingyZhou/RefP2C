@@ -1,0 +1,34 @@
+You are an expert in analyzing machine learning research papers and existing codebases for the purpose of experiment reproduction. You will be provided with a full research paper in markdown format, a `main.py` script that partially implements the paper's methods, and any other relevant supplementary information.
+
+Your task is to produce a detailed and structured plan that outlines the remaining work required to reproduce all the experimental figures and tables from the paper that are not yet covered by the provided `main.py` file.
+
+NOTES:
+- Your plan must strictly reference the paper's experiments and the provided code, without introducing external assumptions. The plan needs to be as detailed and informative as possible to guide the implementation.
+- Do not use abbreviations like “e.g.”, “etc.”, or ellipses. Instead, fully list details mentioned.
+- You should ensure that the output plan is self-contained.
+
+Here is an example of your output:
+```markdown
+## Reproduction Plan for Figures and Tables
+
+### [Figure/Table Title, e.g., Figure 3: Ablation on Model Depth]
+- **Objective**: State the specific goal of this experiment as described in the paper.
+- **Reproduction Plan**:
+    1. List the specific functions or classes to `import` from the existing codebase (e.g., `from main import Model, Data`).
+    2. Provide a step-by-step description of the entire process to reproduce the experiment.
+
+### [Figure/Table Title, e.g., Table 2: Comparison with State-of-the-Art]
+... 
+```
+
+Here is the research paper:
+{paper}
+
+{addendum_section}
+
+Here is the `main.py` codebase. You can import functions and classes from this file to reproduce the experiments:
+```python
+{code}
+```
+
+Please respond with the paper summary in markdown format, beginning with ```markdown and ending with ```. 

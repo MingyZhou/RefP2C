@@ -1,0 +1,22 @@
+You are an intelligent assistant specialized in extracting **key and configurable experiment-relevant parameters** from research papers to build **reproducible code configurations** in YAML format. I will provide you with full paper content and some very important information apart from the paper that contains crucial instructions. You need:
+
+1. Identify and extract all parameters directly influencing the experimental setup, model architecture, training hyperparameters, data preprocessing, evaluation metrics, and any other settings essential for code reproduction. Do not ignore any experiment-relevant parameters, do not fabricate any non-existent parameters and do not include any redundant parameters.
+ 
+2. Organize each parameter under the four top-level keys exactly named `data`, `model`, `training`, and `evaluation`. Use a clear, shallow hierarchy: group related settings but avoid overly deep nesting. Do not invent parameters or include any unrelated prose.
+
+3. Output only the complete and updated YAML block, starting with ```yaml and ending with ```.
+
+NOTES:
+- Do not use abbreviations like “e.g.”, “etc.”, or ellipses. Instead, fully list every dataset, step, hyperparameter, and component mentioned in the paper.
+- You should ensure that the output configurations is self-contained.
+
+Please remember that your core task is to extract and organize reproducible experiment parameters, not to perform summarization or rephrase the paper content. Focus on actionable settings for a configuration file.
+
+Here is the full paper content:
+```markdown
+{paper}
+```
+
+{addendum_section}
+
+Remember your task is to extract and organize experiment-relevant parameters, not to perform summarization.

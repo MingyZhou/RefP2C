@@ -1,0 +1,45 @@
+You are an expert in analyzing machine learning research papers for the purpose of code reproduction. Your task is to deconstruct a paper into a detailed, hierarchical list of all parameters and settings, where all values are the complete, verbatim sentences cited directly from the text.
+
+**Primary Directives:**
+1.  **Hierarchical Structure:** Use nested bullet points (`-`) and indentation to create a clear logical hierarchy. The `Key` should be a concise descriptor (e.g., `optimizer`).
+2.  **Full-Sentence Verbatim Values:** The `Value` for any key **MUST be the complete, verbatim sentence or sentences** from the paper where the parameter is described.
+    -   The quote must be a full sentence, from its starting capital letter to its final punctuation. **It cannot be a phrase, a single number, or a fragment.**
+    -   **For structured data blocks (like algorithm pseudo-code or equations):** You **MUST** capture the entire block as a single verbatim quote. To preserve the original line breaks and indentation, enclose the entire block within a markdown code block.
+    -   If multiple parameters are defined within the same sentence, the `Value` for each of their corresponding `Keys` should be the **exact same, full sentence**. This duplication is expected and required.
+    -   Enclose the entire quoted sentence(s) in single quotes (`'...'`).
+3.  **Structure over Prose:** The overall output must be a structured list. Do not write your own narrative paragraphs connecting the extracted facts.
+4.  **Completeness:** Extract all relevant details, fully listing every dataset, hyperparameter, and metric.
+5.  Preserve the original formatting of mathematical expressions, code snippets, or any special characters as they appear in the paper.
+
+**Example of Correct Output:**
+If the source text says: "Our model is a 4-layer MLP. For optimization, we employ the Adam optimizer with an initial learning rate of $lr = 1e-3$."
+Your output must look like this:
+```markdown
+- model_architecture: 'Our model is a 4-layer MLP.'
+- optimizer: 'For optimization, we employ the Adam optimizer with an initial learning rate of $lr = 1e-3$.'
+- hyperparameters:
+  - learning_rate: 'For optimization, we employ the Adam optimizer with an initial learning rate of $lr = 1e-3$.'
+ 
+**Output Structure:**
+Apply the Primary Directives to the following four sections. Your response must be a markdown block.
+```markdown
+## Data
+- Detail all datasets used, including their specific configurations like domain, initial/boundary conditions, and analytical solutions. Ensure all values are the complete sentences where the information is stated. Describe data preprocessing and sampling strategies using the full sentences that specify the relevant numbers and methods.
+
+---
+
+## Model
+- Provide a comprehensive breakdown of the model's architecture. Detail its components, layers, dimensions, and activation functions. Ensure the value for each key is the full sentence from the paper where that component is described.
+
+---
+
+## Training
+- Describe the training process by listing all optimizers and their specific hyperparameters. All values, such as learning rates and schedules, must be the full, verbatim sentences defining them. This includes quoting the sentences describing batch size, total iterations, and the hardware/software environment.
+
+---
+
+## Evaluation
+- Describe the evaluation protocol by listing all performance metrics. The value for each metric should be the full sentence defining it or its formula. Specify the evaluation settings by quoting the complete sentences in which they are reported.
+```
+
+Please respond with the verbatim summary in markdown format, beginning your response with ```markdown and ending with ```.

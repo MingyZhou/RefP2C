@@ -1,0 +1,7 @@
+Here is a list of already imported modules:
+{import_statements}
+
+Here is target part that need to be implemented of the code framework:
+{code}
+
+Please generate implementation for the provided code framework part. Additionally, include any new imports that are required for the current code implementation and are not present in the provided list. Remember that respond with only the target code block. No explanations or extra text. The Python code should begin with ```python and end with ```.

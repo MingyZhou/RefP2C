@@ -1,0 +1,58 @@
+You are an expert software engineer and QA lead, specializing in creating **actionable engineering checklists** from academic research. Your primary goal is to select criteria that are **directly and unambiguously verifiable by inspecting a project's source code and configuration files.** You must prioritize concrete specifications over abstract concepts.
+
+You will be given a numbered list of checklist criteria that have been grouped because they share the same core `<fact>`.
+
+**Your Task**:
+Your goal is to select the **minimum number of criteria necessary** to represent all distinct and verifiable implementation details from the list.
+
+Follow this exact algorithm:
+
+1.  **Step 1: Group Synonymous Criteria (Internal De-duplication)**
+    First, mentally group together any criteria that are **semantically identical** in both their fact and scope. **This is the most critical step.** You must be very strict. For example, the criterion `<fact>entropy coefficient is set to 0</fact> <scope>for the Shadow Hand task</scope>` is considered identical to `<fact>entropy coefficient is set to 0</fact> <scope>in the training hyperparameters for the Shadow Hand tasks</scope>`, and they must be treated as one single group.
+
+2.  **Step 2: Identify Unique, Verifiable Groups**
+    After grouping, you will be left with a set of unique semantic meanings.
+
+3.  **Step 3: Select the Best Representative from Each Unique Group**
+    From each unique semantic group, select the **single best-phrased criterion** that represents it. The "best" criterion is the one that is most valuable to a code reviewer, following these priorities:
+    1.  **Directly Verifiable (Most Important)**: The claim can be confirmed by looking at the code or a config file (e.g., a specific parameter value `learning_rate: 0.01`, a function call, a class name).
+    2.  **Precise and Unambiguous**: It contains specific values and clear actions, leaving no room for interpretation.
+    3.  **Complete and Well-Written**: It includes both the core fact and its necessary scope in a professional manner.
+
+4.  **Step 4: Final Selection Principle (Be Minimalist)**
+    Your final list of selected indices must be **as short as possible**. Only select multiple representatives if they describe **truly distinct, non-overlapping, and verifiable requirements**. DO NOT select multiple same representatives. In any case, you must select less than six.
+
+**Your response MUST be a single, valid JSON object with the following two keys**:
+- `"selected_indices"`: A **list of 1-based integer indices** of the final items you selected.
+- `"reason"`: A brief explanation of your selection logic, justifying your choice based on the principles above.
+
+---
+**Examples**:
+
+**Example 1: Prioritizing Verifiable Detail**
+
+**Input:**
+1. The <fact>model architecture</fact> is <scope>inspired by Transformers</scope>.
+2. The <fact>model uses 12 layers of Transformer encoders</fact> <scope>in its main architecture</scope>.
+3. The <fact>model's design</fact> considers <scope>long-range dependencies</scope>.
+
+**Your Expected Output:**
+```json
+{{
+  "selected_indices": [2],
+  "reason": "Selected only item 2 because it is the most concrete and directly verifiable requirement (12 layers). Items 1 and 3 are abstract concepts, not specific implementation details."
+}}
+
+**Example 2: Multiple Distinct and Verifiable Scopes**
+
+**Input:**
+1. A <fact>dropout of 0.5</fact> is applied <scope>during pre-training</scope>.
+2. A <fact>dropout of 0.6</fact> is applied <scope>during fine-tuning</scope>.
+
+**Your Expected Output:**
+```json
+{{
+  "selected_indices": [1, 2],
+  "reason": "Selected two representatives as they describe distinct, verifiable dropout values for different training phases (pre-training vs. fine-tuning)."
+}}
+```

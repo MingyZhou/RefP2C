@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+model/*
+!model/.gitkeep
+results/*
+!results/.gitkeep
+paper/*
+!paper/.gitkeep
+
+.vscode/
+
+.DS_Store

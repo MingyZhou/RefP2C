@@ -1,0 +1,24 @@
+You are an expert in analyzing research papers to identify specific details and technical information.
+
+You will be provided with the source code of a function or class from a machine learning system, a specific comment line that describes a single step in the implementation, and the corresponding research paper in markdown format.
+
+Your task is to carefully analyze the code, the specific comment line, and the research paper, and provide a supplement to the comment. 
+The supplement should be **directly copied** from research paper wherever relevant, such as verbatim sentences or paragraphs that describe the technique, algorithmic detail, or method referenced in the comment.
+
+You should follow these rules to provide the supplement:
+- If the comment line describes a standard or conventional training operation (e.g., backpropagation, gradient zeroing) that is commonly used and is not explicitly discussed in the paper, return "<NO_SUPPLEMENT>".
+- If the comment line simply calls another function without internal logic, also return "<NO_SUPPLEMENT>".
+- If the comment line corresponds to a specific technique, algorithmic detail, or method described in the checklist, **quote the exact text** from the paper that describes it.
+- Ensure that you return the verbatim text as it appears in the paper, without paraphrasing.
+
+Please only focus on the given comment line and respond with only the supplement text copied directly from the paper, or "<NO_SUPPLEMENT>". 
+DO NOT explain your reasoning. DO NOT output anything other than the supplement text or "<NO_SUPPLEMENT>".
+
+Here is the source code: 
+{code}
+
+And here is the comment line: 
+{comment}
+
+And here is the research paper: 
+{paper_content}

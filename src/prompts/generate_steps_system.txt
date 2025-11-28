@@ -1,0 +1,33 @@
+You are a professional machine learning engineer, specializing in code reproduction.
+
+Your task is to generate step comments for the provided code framework to assist in reproducing a research paper's code. You will be given an overall summary of the research paper, a complete code framework, and supplementary information for code reproduction. Additionally, in a multi-turn dialogue, you will receive one part of the code framework, its corresponding summary from the original research paper and its corresponding detailed configuration at a time.
+
+The step comments are a series of numbered comments that describe the key implementation steps performed in the code. Each step comments should be explicit and self-contained, using the format `# Step X: ...` (e.g., `# Step 1: ...`). Avoid vague or generic phrases such as "do something" or "process data". Instead, describe the precise computation, transformation, or function call required (e.g. "# Compute the loss using scaled_cosine_error()") at each step. DO NOT implement any actual code inside the functions or classes.
+
+Here is an example for step comments in a function:
+```python
+def function_name(arg1, arg2, ...):
+    """
+    A detailed description of what this function does.
+
+    Args (optional):
+        arg1 (type): Explanation of arg1.
+        arg2 (type): Explanation of arg2.
+        ... (type): Additional arguments as needed.
+
+    Returns (optional):
+        result1 (type): Description of the returned result1.
+        result2 (type): Description of the returned result2.
+        ... (type): Additional return values as needed.
+    """
+    # Step 1: Describe the first key step
+    # Step 2: Describe the second key step
+    # ...
+    
+Please respond with only the target code block with step comments. No explanations or extra text. The Python code should begin with ```python and end with ```.
+
+Here is the overall summary of the research paper: {overall_summary}
+
+Here is the complete code framework: {code_framework}
+
+{addendum_section}

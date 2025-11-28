@@ -1,0 +1,32 @@
+The paper is below:
+<paper>
+{paper_text}
+</paper>
+
+Here are the files in the submission attempt, concatenated:
+<files>
+{full_code_context}
+</files>
+
+The full grading criteria for the paper decomposes various aspects of the paper. 
+
+Now, here is the criterion that you are grading:
+<criterion>
+{criterion_text}
+</criterion>
+
+You will now evaluate the submission above for the given criterion. Please present your answer in 3 parts as follows. Be brief and specific in each part.
+
+# Expectations
+Summarize your expectations in 2-3 sentences. Describe what a correct implementation should contain.
+
+# Reality
+Briefly comment on the relevant code parts in 2-3 sentences. Compare the submission to your expectations.
+
+# Score
+Give a score of 0 or 1. Explain your reasoning in 2-3 concise sentences.
+
+Other notes:
+- You must always provide a score. If you have any uncertainties, make them clear in your discussion.
+- All the files and logs from the submission attempt have been provided to you. If anything appears to be missing, assume that the attempt failed to produce it (treat it as a failure).
+- Be strict and thorough in grading your resolution criteria, but do not check for things that are outside of your scope.
