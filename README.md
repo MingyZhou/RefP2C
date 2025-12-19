@@ -1,5 +1,5 @@
 # RefP2C: Reflective Paper-to-Code Development Enabled by Fine-Grained Verification
-[![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2508.16671v1)
+**[RePro: Reflective Paper-to-Code Reproduction Enabled by Fine-Grained Verification]** [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2508.16671v1)
 
 > *Note: This is an early draft. The updated version will be uploaded soon.*
 
