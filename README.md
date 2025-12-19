@@ -95,3 +95,20 @@ Simply modify these variables in `run.sh` before execution.
 
 ---
 
+## Citation
+
+If you find our work useful in your research, please consider citing:
+
+```bibtex
+@misc{zhou2025reflective,
+      title={Reflective Paper-to-Code Reproduction Enabled by Fine-Grained Verification}, 
+      author={Mingyang Zhou and Quanming Yao and Lun Du and Lanning Wei and Da Zheng},
+      year={2025},
+      eprint={2508.16671},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE},
+      url={[https://arxiv.org/abs/2508.16671](https://arxiv.org/abs/2508.16671)}, 
+}
+```
+
+---
